@@ -98,7 +98,7 @@
                     android:layout_height="85dp"
                     android:contentDescription="Account"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/account_logo" />
+                    android:src="@drawable/btn_account" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -133,7 +133,7 @@
                     android:layout_height="85dp"
                     android:scaleType="fitCenter"
                     android:contentDescription="Case Status"
-                    android:src="@drawable/case_status_logo" />
+                    android:src="@drawable/btn_case_status" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -168,7 +168,7 @@
                     android:layout_height="85dp"
                     android:scaleType="fitCenter"
                     android:contentDescription="Archives"
-                    android:src="@drawable/archives_logo" />
+                    android:src="@drawable/btn_archives" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -203,7 +203,7 @@
                     android:layout_height="85dp"
                     android:scaleType="fitCenter"
                     android:contentDescription="Submit Report"
-                    android:src="@drawable/submit_report_logo" />
+                    android:src="@drawable/btn_report" />
 
                 <TextView
                     android:layout_width="wrap_content"
