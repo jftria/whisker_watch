@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/values/colors.xml -->
+<resources>
+    <!-- Brand Colors -->
+    <color name="primary_purple">#5B5EA6</color>
+    <color name="primary_purple_dark">#4A4D8B</color>
+    <color name="primary_purple_light">#7B7EC6</color>
+
+    <!-- Card Colors -->
+    <color name="card_blue">#A3C8EB</color>
+    <color name="card_yellow">#F5E6C0</color>
+    <color name="card_orange">#F5D5B0</color>
+
+    <!-- UI Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="white_70">#B3FFFFFF</color>
+    <color name="bg_light_blue">#EFF3FB</color>
+    <color name="search_bg">#F0F2F8</color>
+    <color name="drop_zone_bg">#F5F5F5</color>
+    <color name="divider_color">#E8E8E8</color>
+
+    <!-- Text Colors -->
+    <color name="text_dark">#1A1A2E</color>
+    <color name="text_secondary">#555577</color>
+    <color name="hint_gray">#AAAAAA</color>
+    <color name="nav_inactive">#888888</color>
+
+    <!-- Status Colors -->
+    <color name="status_ongoing">#C8A84B</color>
+    <color name="status_resolved">#4CAF50</color>
+    <color name="status_pending">#FF9800</color>
+
+    <!-- Button Colors -->
+    <color name="btn_green">#6DBF67</color>
+    <color name="btn_pink">#E8A0B0</color>
+    <color name="btn_yellow">#FDFDD6</color>
+    <color name="btn_blue">#DBE9FD</color>
+
+    <!--strokes -->
+    <color name="srk_blue">#6B96D1</color>
+    <color name="srk_yellow">#F0D483</color>
+</resources>
