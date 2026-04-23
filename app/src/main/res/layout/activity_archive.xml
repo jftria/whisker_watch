@@ -163,15 +163,16 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/account_logo"
+                android:src="@drawable/geo_map_logo"
                 android:contentDescription="@string/profile"
                 app:tint="@color/text_label_blue" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/profile"
-                android:textSize="11sp"
-                android:textColor="@color/text_label_blue"/>
+                android:text="Geotagging"
+                android:textColor="@color/text_label_blue"
+                android:textSize="11sp" />
         </LinearLayout>
 
     </LinearLayout>

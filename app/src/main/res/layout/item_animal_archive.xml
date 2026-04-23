@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/background"
+            android:src="@drawable/animal2_placeholder"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -25,7 +25,7 @@
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_margin="12dp"
-            android:src="@drawable/account_logo"
+            android:src="@drawable/favorite_icn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/white" />
@@ -66,7 +66,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
-                android:src="@drawable/case_status_logo"
+                android:src="@drawable/back_arrow_icn"
                 app:tint="@color/srk_blue_light" />
 
         </LinearLayout>

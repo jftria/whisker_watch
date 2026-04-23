@@ -129,7 +129,7 @@
                         <ImageView
                             android:layout_width="36dp"
                             android:layout_height="36dp"
-                            android:src="@drawable/account_logo"
+                            android:src="@drawable/geo_map_logo"
                             android:contentDescription="Avatar"
                             app:tint="@color/text_label_blue" />
 
@@ -488,15 +488,16 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/account_logo"
+                android:src="@drawable/geo_map_logo"
                 app:tint="@color/text_label_blue" />
 
             <TextView
+                android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profile"
-                android:textSize="10sp"
-                android:textColor="@color/text_label_blue" />
+                android:text="Geotagging"
+                android:textColor="@color/text_label_blue"
+                android:textSize="10sp" />
         </LinearLayout>
 
     </LinearLayout>
