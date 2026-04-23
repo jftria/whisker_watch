@@ -194,10 +194,14 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
+            android:id="@+id/nav_home"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="24dp"
@@ -213,22 +217,27 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/nav_report"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/submit_report_logo"
-                app:tint="@color/text_label_blue" />
+                app:tint="@color/primary_purple" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Report"
                 android:textSize="10sp"
-                android:textColor="@color/text_label_blue"/>
+                android:textColor="@color/primary_purple"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
@@ -243,10 +252,14 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/nav_archives"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="24dp"
@@ -262,10 +275,14 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/nav_profile"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="24dp"
