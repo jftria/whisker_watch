@@ -10,14 +10,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class CaseStatusActivity extends AppCompatActivity {
 
     private static final ArrayList<Report> reportList = new ArrayList<>();
     private LinearLayout containerCases;
     private TextView tvEmptyState;
+    private SearchView searchView;
+    private String currentQuery = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,19 +31,50 @@ public class CaseStatusActivity extends AppCompatActivity {
 
         containerCases = findViewById(R.id.containerCases);
         tvEmptyState = findViewById(R.id.tvEmptyState);
+        searchView = findViewById(R.id.searchView);
 
         setupNavigation();
+        setupSearch();
 
         // Check if a new report was sent
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("REPORT_DATA")) {
             Report newReport = (Report) intent.getSerializableExtra("REPORT_DATA");
             if (newReport != null) {
-                reportList.add(0, newReport); // Add to top of list
+                reportList.add(0, newReport);
             }
         }
 
         displayReports();
+    }
+
+    private void setupSearch() {
+        if (searchView == null) return;
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Called when user taps the magnifying glass / Enter on keyboard
+                currentQuery = query == null ? "" : query.trim();
+                displayReports();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Called every time the text changes — gives live filtering
+                currentQuery = newText == null ? "" : newText.trim();
+                displayReports();
+                return true;
+            }
+        });
+
+        // Also handle the X button (clears search)
+        searchView.setOnCloseListener(() -> {
+            currentQuery = "";
+            displayReports();
+            return false;
+        });
     }
 
     private void setupNavigation() {
@@ -84,19 +120,28 @@ public class CaseStatusActivity extends AppCompatActivity {
     }
 
     private void displayReports() {
-        // Clear container to avoid duplicates
         containerCases.removeAllViews();
 
-        // Empty state
-        if (reportList.isEmpty()) {
-            if (tvEmptyState != null) tvEmptyState.setVisibility(View.VISIBLE);
+        // Filter the list based on the current search query
+        List<Report> filtered = filterReports(reportList, currentQuery);
+
+        // Handle empty state with appropriate message
+        if (filtered.isEmpty()) {
+            if (tvEmptyState != null) {
+                tvEmptyState.setVisibility(View.VISIBLE);
+                if (currentQuery.isEmpty()) {
+                    tvEmptyState.setText("No reports yet.\nSubmit one from the Report tab.");
+                } else {
+                    tvEmptyState.setText("No reports match \"" + currentQuery + "\"");
+                }
+            }
             return;
         } else {
             if (tvEmptyState != null) tvEmptyState.setVisibility(View.GONE);
         }
 
-        // Inflate one card per report, in order (newest first since we added to index 0)
-        for (Report report : reportList) {
+        // Inflate one card per matching report
+        for (Report report : filtered) {
             View cardView = LayoutInflater.from(this)
                     .inflate(R.layout.case_item_layout, containerCases, false);
 
@@ -107,7 +152,6 @@ public class CaseStatusActivity extends AppCompatActivity {
             if (tvDesc != null) tvDesc.setText(report.getDescription());
             if (tvLoc != null) tvLoc.setText(report.getLocation());
 
-            // Display the user's image, or fall back to placeholder
             if (ivPhoto != null) {
                 if (report.hasImage()) {
                     try {
@@ -120,7 +164,30 @@ public class CaseStatusActivity extends AppCompatActivity {
                 }
             }
 
-            containerCases.addView(cardView); // append (no index needed — list is already ordered)
+            containerCases.addView(cardView);
         }
+    }
+
+    /**
+     * Returns a list of reports whose description or location contains the query.
+     * Case-insensitive. Empty query returns all reports.
+     */
+    private List<Report> filterReports(List<Report> source, String query) {
+        if (query == null || query.isEmpty()) {
+            return new ArrayList<>(source);
+        }
+
+        String needle = query.toLowerCase(Locale.getDefault());
+        List<Report> result = new ArrayList<>();
+
+        for (Report r : source) {
+            String desc = r.getDescription() == null ? "" : r.getDescription().toLowerCase(Locale.getDefault());
+            String loc = r.getLocation() == null ? "" : r.getLocation().toLowerCase(Locale.getDefault());
+
+            if (desc.contains(needle) || loc.contains(needle)) {
+                result.add(r);
+            }
+        }
+        return result;
     }
 }
