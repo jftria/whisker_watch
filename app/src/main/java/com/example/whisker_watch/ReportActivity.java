@@ -142,7 +142,7 @@ public class ReportActivity extends AppCompatActivity {
 
         if (navCenter != null) {
             navCenter.setOnClickListener(v -> {
-                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(this, CaseStatusActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             });
