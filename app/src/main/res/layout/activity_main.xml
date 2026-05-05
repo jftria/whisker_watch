@@ -37,7 +37,7 @@
             android:paddingEnd="5dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Notifications"
-            android:src="@drawable/img" />
+            android:src="@drawable/notif_img" />
     <!--the logo Ww area -->
         <ImageView
             android:id="@+id/imageView2"

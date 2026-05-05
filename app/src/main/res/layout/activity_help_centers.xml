@@ -116,7 +116,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:contentDescription="Logo"
-                android:src="@drawable/ww_logo" />
+                android:src="@drawable/stats_btn" />
         </LinearLayout>
 
         <LinearLayout
@@ -160,7 +160,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:contentDescription="Nearby"
-                android:src="@drawable/account_logo"
+                android:src="@drawable/geo_map_logo"
                 app:tint="@color/primary_purple" />
 
             <TextView

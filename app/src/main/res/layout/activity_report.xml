@@ -258,7 +258,7 @@
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/ww_logo" />
+                android:src="@drawable/stats_btn" />
         </LinearLayout>
 
         <!-- Archives -->
