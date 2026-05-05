@@ -185,7 +185,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Bottom Navigation Mock -->
+    <!-- Bottom Navigation -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
@@ -195,8 +195,9 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent">
 
+        <!-- Home -->
         <LinearLayout
-            android:id="@+id/nav_home"
+            android:id="@+id/navHome"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -218,8 +219,9 @@
                 android:textColor="@color/text_label_blue"/>
         </LinearLayout>
 
+        <!-- Report (active) -->
         <LinearLayout
-            android:id="@+id/nav_report"
+            android:id="@+id/navReport"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -242,19 +244,26 @@
                 android:textStyle="bold"/>
         </LinearLayout>
 
+        <!-- Center WW Logo -->
         <LinearLayout
+            android:id="@+id/navCenter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center">
-             <ImageView
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="Home">
+            <ImageView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:src="@drawable/ww_logo" />
         </LinearLayout>
 
+        <!-- Archives -->
         <LinearLayout
-            android:id="@+id/nav_archives"
+            android:id="@+id/navArchives"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -276,8 +285,9 @@
                 android:textColor="@color/text_label_blue"/>
         </LinearLayout>
 
+        <!-- Nearby -->
         <LinearLayout
-            android:id="@+id/nav_help_centers"
+            android:id="@+id/navHelpCenters"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
