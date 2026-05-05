@@ -107,20 +107,31 @@ public class ReportActivity extends AppCompatActivity {
     }
 
     private void setupNavigation() {
-        View navHome = findViewById(R.id.nav_home);
-        View navReport = findViewById(R.id.nav_report);
-        View navArchives = findViewById(R.id.nav_archives);
-        View navHelpCenters = findViewById(R.id.nav_help_centers);
+        View navHome = findViewById(R.id.navHome);
+        View navReport = findViewById(R.id.navReport);
+        View navCenter = findViewById(R.id.navCenter);
+        View navArchives = findViewById(R.id.navArchives);
+        View navHelpCenters = findViewById(R.id.navHelpCenters);
 
         if (navHome != null) {
             navHome.setOnClickListener(v -> {
-                startActivity(new Intent(this, CaseStatusActivity.class));
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
             });
         }
 
         if (navReport != null) {
             navReport.setOnClickListener(v -> {
                 // Already in ReportActivity
+            });
+        }
+
+        if (navCenter != null) {
+            navCenter.setOnClickListener(v -> {
+                Intent intent = new Intent(this, CaseStatusActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
             });
         }
 

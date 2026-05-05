@@ -51,7 +51,7 @@ public class ArchiveActivity extends AppCompatActivity {
 
         if (navHome != null) {
             navHome.setOnClickListener(v -> {
-                startActivity(new Intent(this, CaseStatusActivity.class));
+                startActivity(new Intent(this, MainActivity.class));
             });
         }
 

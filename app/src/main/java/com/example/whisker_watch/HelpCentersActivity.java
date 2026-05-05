@@ -39,10 +39,15 @@ public class HelpCentersActivity extends AppCompatActivity {
 
         setupNav();
     }
-
+//if (navHome != null) {
+//    navHome.setOnClickListener(v -> {
+//        startActivity(new Intent(this, MainActivity.class));
+//    });
+//}
     private void setupNav() {
-        findViewById(R.id.navHome).setOnClickListener(v -> startActivity(new Intent(this, CaseStatusActivity.class)));
+        findViewById(R.id.navHome).setOnClickListener(v -> startActivity(new Intent(this, MainActivity.class)));
         findViewById(R.id.navReport).setOnClickListener(v -> startActivity(new Intent(this, ReportActivity.class)));
         findViewById(R.id.navArchives).setOnClickListener(v -> startActivity(new Intent(this, ArchiveActivity.class)));
+        findViewById(R.id.navCenter).setOnClickListener(v -> startActivity(new Intent(this, CaseStatusActivity.class)));
     }
 }
