@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/header_blue">
 
-    <!-- Header Text -->
     <TextView
         android:id="@+id/tvHeader"
         android:layout_width="wrap_content"
@@ -20,7 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Main Content Container -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -35,7 +33,6 @@
             android:layout_height="wrap_content"
             android:padding="24dp">
 
-            <!-- Case Description -->
             <TextView
                 android:id="@+id/tvCaseDescriptionLabel"
                 android:layout_width="wrap_content"
@@ -60,7 +57,6 @@
                 android:inputType="textMultiLine"
                 app:layout_constraintTop_toBottomOf="@id/tvCaseDescriptionLabel" />
 
-            <!-- Location -->
             <TextView
                 android:id="@+id/tvLocationLabel"
                 android:layout_width="wrap_content"
@@ -88,7 +84,6 @@
                 android:scrollHorizontally="false"
                 app:layout_constraintTop_toBottomOf="@id/tvLocationLabel" />
 
-            <!-- Geo-tagging Button -->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnGeoTagging"
                 android:layout_width="wrap_content"
@@ -106,7 +101,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etLocation" />
 
-            <!-- Attach Media -->
             <TextView
                 android:id="@+id/tvAttachMediaLabel"
                 android:layout_width="wrap_content"
@@ -119,13 +113,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btnGeoTagging" />
 
+            <!-- Drop Zone (preview/text area) -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/dropZone"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="180dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_drop_zone"
                 app:layout_constraintTop_toBottomOf="@id/tvAttachMediaLabel">
+
+                <ImageView
+                    android:id="@+id/ivPreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    android:contentDescription="Selected image preview"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <TextView
                     android:id="@+id/tvDropText"
@@ -136,38 +143,37 @@
                     android:textColor="@color/text_label_blue"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/btnUploadFile"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_chainStyle="packed" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnUploadFile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/bg_btn_yellow_shadow"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="@string/upload_file"
-                    android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvDropText" />
+                    app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Upload File Button (outside the drop zone) -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnUploadFile"
+                android:layout_width="180dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_btn_yellow_shadow"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:text="@string/upload_file"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dropZone" />
 
             <!-- Submit Button -->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSubmit"
-                android:layout_width="wrap_content"
+                android:layout_width="180dp"
                 android:layout_height="48dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/bg_btn_green_shadow"
                 android:paddingStart="48dp"
@@ -180,12 +186,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dropZone" />
+                app:layout_constraintTop_toBottomOf="@id/btnUploadFile" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Bottom Navigation -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
@@ -195,7 +200,6 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <!-- Home -->
         <LinearLayout
             android:id="@+id/navHome"
             android:layout_width="0dp"
@@ -219,7 +223,6 @@
                 android:textColor="@color/text_label_blue"/>
         </LinearLayout>
 
-        <!-- Report (active) -->
         <LinearLayout
             android:id="@+id/navReport"
             android:layout_width="0dp"
@@ -244,7 +247,6 @@
                 android:textStyle="bold"/>
         </LinearLayout>
 
-        <!-- Center WW Logo -->
         <LinearLayout
             android:id="@+id/navCenter"
             android:layout_width="0dp"
@@ -261,7 +263,6 @@
                 android:src="@drawable/stats_btn" />
         </LinearLayout>
 
-        <!-- Archives -->
         <LinearLayout
             android:id="@+id/navArchives"
             android:layout_width="0dp"
@@ -285,7 +286,6 @@
                 android:textColor="@color/text_label_blue"/>
         </LinearLayout>
 
-        <!-- Nearby -->
         <LinearLayout
             android:id="@+id/navHelpCenters"
             android:layout_width="0dp"

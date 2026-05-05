@@ -10,9 +10,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -39,20 +40,33 @@ public class ReportActivity extends AppCompatActivity {
 
     private EditText etDescription, etLocation;
     private AppCompatButton btnGeoTagging;
+    private ImageView ivPreview;
+    private TextView tvDropText;
     private String selectedImageUri = "";
 
     private FusedLocationProviderClient fusedLocationClient;
 
-    // Image Picker Launcher
-    private final ActivityResultLauncher<Intent> imagePickerLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                    Uri imageUri = result.getData().getData();
-                    if (imageUri != null) {
-                        selectedImageUri = imageUri.toString();
-                        Toast.makeText(this, "Image Selected!", Toast.LENGTH_SHORT).show();
+    // Modern photo picker — simpler than ACTION_PICK and works on all Android versions
+    private final ActivityResultLauncher<String> photoPickerLauncher = registerForActivityResult(
+            new ActivityResultContracts.GetContent(),
+            uri -> {
+                if (uri != null) {
+                    // Try to make the URI accessible to other activities
+                    try {
+                        getContentResolver().takePersistableUriPermission(
+                                uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    } catch (SecurityException ignored) {
+                        // Some providers don't allow this — that's okay
                     }
+
+                    selectedImageUri = uri.toString();
+
+                    // Show preview inside drop zone
+                    ivPreview.setImageURI(uri);
+                    ivPreview.setVisibility(View.VISIBLE);
+                    tvDropText.setVisibility(View.GONE);
+
+                    Toast.makeText(this, "Image Selected!", Toast.LENGTH_SHORT).show();
                 }
             }
     );
@@ -65,6 +79,8 @@ public class ReportActivity extends AppCompatActivity {
         etDescription = findViewById(R.id.etCaseDescription);
         etLocation = findViewById(R.id.etLocation);
         btnGeoTagging = findViewById(R.id.btnGeoTagging);
+        ivPreview = findViewById(R.id.ivPreview);
+        tvDropText = findViewById(R.id.tvDropText);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -81,8 +97,7 @@ public class ReportActivity extends AppCompatActivity {
 
         // Upload File Button
         findViewById(R.id.btnUploadFile).setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            imagePickerLauncher.launch(intent);
+            photoPickerLauncher.launch("image/*");
         });
 
         // Submit Button
@@ -95,14 +110,12 @@ public class ReportActivity extends AppCompatActivity {
                 return;
             }
 
-            // Create Report Object
             Report report = new Report(desc, loc, selectedImageUri);
 
-            // Navigate to Case Status and pass data
             Intent intent = new Intent(ReportActivity.this, CaseStatusActivity.class);
             intent.putExtra("REPORT_DATA", report);
             startActivity(intent);
-            finish(); // Close report activity
+            finish();
         });
     }
 
@@ -129,7 +142,7 @@ public class ReportActivity extends AppCompatActivity {
 
         if (navCenter != null) {
             navCenter.setOnClickListener(v -> {
-                Intent intent = new Intent(this, CaseStatusActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             });
@@ -201,7 +214,6 @@ public class ReportActivity extends AppCompatActivity {
                         if (location != null) {
                             updateLocationField(location);
                         } else {
-                            // Last known is null — request a fresh fix
                             requestCurrentLocation();
                         }
                     })
@@ -253,7 +265,6 @@ public class ReportActivity extends AppCompatActivity {
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            // Async geocoder (API 33+)
             geocoder.getFromLocation(lat, lng, 1, addresses ->
                     runOnUiThread(() -> {
                         etLocation.setText(buildLine(addresses, lat, lng, coords));
@@ -261,7 +272,6 @@ public class ReportActivity extends AppCompatActivity {
                     })
             );
         } else {
-            // Run the blocking geocoder call in a background thread
             new Thread(() -> {
                 try {
                     List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
