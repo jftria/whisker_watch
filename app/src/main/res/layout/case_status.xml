@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/header_blue">
 
-    <!--top bar -->
+    <!-- top bar -->
     <RelativeLayout
         android:id="@+id/locationBar"
         android:layout_width="match_parent"
@@ -82,7 +82,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Case List (Placeholder) -->
+    <!-- Case List Container -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollCases"
         android:layout_width="match_parent"
@@ -100,279 +100,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="16dp" />
 
-            <!-- Case 1 -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardCase1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/white">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="12dp">
-
-                    <!-- Reporter row -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="10dp">
-
-                        <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:src="@drawable/geo_map_logo"
-                            android:contentDescription="Avatar"
-                            app:tint="@color/text_label_blue" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="8dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Anonymous Bulldog"
-                                android:textSize="13sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/text_label_blue" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Apr 19, 2025"
-                                android:textSize="11sp"
-                                android:textColor="@android:color/darker_gray" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Case image -->
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/placeholder_animal"
-                        android:contentDescription="Case Photo" />
-
-                    <!-- Description -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus."
-                        android:textSize="13sp"
-                        android:textColor="@android:color/darker_gray"
-                        android:lineSpacingMultiplier="1.4"
-                        android:maxLines="3"
-                        android:ellipsize="end" />
-
-                    <!-- Status badge -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Ongoing"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:background="@drawable/bg_btn_yellow_shadow"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="6dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Case 2 -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardCase2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/white">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="12dp">
-
-                    <!-- Reporter row -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="10dp">
-
-                        <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:src="@drawable/account_logo"
-                            android:contentDescription="Avatar"
-                            app:tint="@color/text_label_blue" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="8dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Anonymous Doberman"
-                                android:textSize="13sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/text_label_blue" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Apr 20, 2025"
-                                android:textSize="11sp"
-                                android:textColor="@android:color/darker_gray" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Case image -->
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/placeholder_animal"
-                        android:contentDescription="Case Photo" />
-
-                    <!-- Description -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo."
-                        android:textSize="13sp"
-                        android:textColor="@android:color/darker_gray"
-                        android:lineSpacingMultiplier="1.4"
-                        android:maxLines="3"
-                        android:ellipsize="end" />
-
-                    <!-- Status badge -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Pending"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:background="@drawable/bg_btn_pink_shadow"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="6dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Case 3 -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardCase3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/white">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="12dp">
-
-                    <!-- Reporter row -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="10dp">
-
-                        <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:src="@drawable/account_logo"
-                            android:contentDescription="Avatar"
-                            app:tint="@color/text_label_blue" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="8dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Anonymous Shepherd"
-                                android:textSize="13sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/text_label_blue" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Apr 21, 2025"
-                                android:textSize="11sp"
-                                android:textColor="@android:color/darker_gray" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Case image -->
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/placeholder_animal"
-                        android:contentDescription="Case Photo" />
-
-                    <!-- Description -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis."
-                        android:textSize="13sp"
-                        android:textColor="@android:color/darker_gray"
-                        android:lineSpacingMultiplier="1.4"
-                        android:maxLines="3"
-                        android:ellipsize="end" />
-
-                    <!-- Status badge -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Resolved"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:background="@drawable/bg_btn_green_shadow"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="6dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <!-- Empty state message (optional, shows when no reports yet) -->
+    <TextView
+        android:id="@+id/tvEmptyState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No reports yet.\nSubmit one from the Report tab."
+        android:textSize="14sp"
+        android:textColor="@color/text_label_blue"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/scrollCases"
+        app:layout_constraintBottom_toBottomOf="@id/scrollCases"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Nav Bar -->
     <LinearLayout
@@ -386,7 +131,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Home (active) -->
         <LinearLayout
             android:id="@+id/navHome"
             android:layout_width="0dp"
@@ -413,7 +157,6 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Report -->
         <LinearLayout
             android:id="@+id/navReport"
             android:layout_width="0dp"
@@ -439,7 +182,6 @@
                 android:textColor="@color/text_label_blue" />
         </LinearLayout>
 
-        <!-- Center WW Logo -->
         <LinearLayout
             android:id="@+id/navCenter"
             android:layout_width="0dp"
@@ -457,7 +199,6 @@
                 android:src="@drawable/ww_logo" />
         </LinearLayout>
 
-        <!-- Archives -->
         <LinearLayout
             android:id="@+id/navArchives"
             android:layout_width="0dp"
@@ -483,7 +224,6 @@
                 android:textColor="@color/text_label_blue" />
         </LinearLayout>
 
-        <!-- Nearby -->
         <LinearLayout
             android:id="@+id/navHelpCenters"
             android:layout_width="0dp"

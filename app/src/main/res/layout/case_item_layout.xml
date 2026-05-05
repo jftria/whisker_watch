@@ -14,6 +14,7 @@
         android:orientation="vertical"
         android:padding="12dp">
 
+        <!-- Reporter row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,6 +26,7 @@
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:src="@drawable/account_logo"
+                android:contentDescription="Avatar"
                 app:tint="@color/text_label_blue" />
 
             <LinearLayout
@@ -35,7 +37,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvReporterName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Anonymous Reporter"
@@ -44,42 +45,58 @@
                     android:textColor="@color/text_label_blue" />
 
                 <TextView
-                    android:id="@+id/tvCaseLocation"
+                    android:id="@+id/tvCaseDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Location"
+                    android:text="Just now"
                     android:textSize="11sp"
                     android:textColor="@android:color/darker_gray" />
             </LinearLayout>
         </LinearLayout>
 
+        <!-- Case image -->
         <ImageView
             android:id="@+id/ivCasePhoto"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/background" />
+            android:src="@drawable/placeholder_animal"
+            android:contentDescription="Case Photo" />
 
+        <!-- Description -->
         <TextView
             android:id="@+id/tvCaseDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Description goes here..."
             android:textSize="13sp"
             android:textColor="@android:color/darker_gray"
+            android:lineSpacingMultiplier="1.4"
             android:maxLines="3"
             android:ellipsize="end" />
 
+        <!-- Location -->
+        <TextView
+            android:id="@+id/tvCaseLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textSize="12sp"
+            android:textColor="@color/text_label_blue"
+            android:textStyle="italic"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <!-- Status badge -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="New Case"
+            android:text="Pending"
             android:textSize="13sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:background="@drawable/bg_btn_yellow_shadow"
+            android:background="@drawable/bg_btn_pink_shadow"
             android:paddingHorizontal="20dp"
             android:paddingVertical="6dp" />
     </LinearLayout>
