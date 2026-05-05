@@ -5,7 +5,7 @@
     <string name="location">Location</string>
     <string name="turn_on_geo_tagging">Turn on geo-tagging</string>
     <string name="attach_media_photo_video">Attach Media (Photo/Video)</string>
-    <string name="drop_files_here_or">Drop files here\nor</string>
+    <string name="drop_files_here_or">Upload here!</string>
     <string name="upload_file">Upload File</string>
     <string name="submit">Submit</string>
     <string name="animals_archive">Animals Archive</string>
